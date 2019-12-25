@@ -1,0 +1,8 @@
+
+STM32F10X_HD/Output
+
+*.hex
+*.axf
+*.o
+*.d
+
