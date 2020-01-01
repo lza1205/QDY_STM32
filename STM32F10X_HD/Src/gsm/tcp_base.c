@@ -113,6 +113,8 @@ void tcp_send(u8 *buf, int len)
 	{
 		//printf("%s %d %d \r\n", __FILE__, __LINE__, len);
 		Second_AT_Data((char *)buf,"SEND OK",len, len);;			//»Ø¸´OK 
+	}else{
+		gsm_base_send(0x1A);
 	}
 
 	/*
