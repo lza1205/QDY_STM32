@@ -347,7 +347,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>0</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -362,10 +362,10 @@
             <uC99>0</uC99>
             <useXO>0</useXO>
             <VariousControls>
-              <MiscControls></MiscControls>
+              <MiscControls>--C99</MiscControls>
               <Define>USE_STDPERIPH_DRIVER, STM32F10X_HD, USE_STM3210E_EVAL</Define>
               <Undefine></Undefine>
-              <IncludePath>..\;..\Src;..\..\Libraries\CMSIS\CM3\CoreSupport;..\..\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x;..\..\Libraries\STM32F10x_StdPeriph_Driver\inc;..\Src\include;..\Src\BSP\SysTick;..\Src\BSP\TIMER;..\Src\BSP\USART;..\Src\BSP\USART;..\Src\gsm;..\Src\QIDI</IncludePath>
+              <IncludePath>..\;..\Src;..\..\Libraries\CMSIS\CM3\CoreSupport;..\..\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x;..\..\Libraries\STM32F10x_StdPeriph_Driver\inc;..\Src\include;..\Src\BSP\SysTick;..\Src\BSP\TIMER;..\Src\BSP\USART;..\Src\BSP\USART;..\Src\network;..\Src\example\qdy;..\Src\sys;..\Src\BSP\gpio;..\Src\sys\command;..\Src\example\RS485_LCD;..\Src\BSP\RTC</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -386,7 +386,7 @@
             </VariousControls>
           </Aads>
           <LDads>
-            <umfTarg>1</umfTarg>
+            <umfTarg>0</umfTarg>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
             <noStLib>0</noStLib>
@@ -395,7 +395,7 @@
             <TextAddressRange>0x08000000</TextAddressRange>
             <DataAddressRange>0x20000000</DataAddressRange>
             <pXoBase></pXoBase>
-            <ScatterFile></ScatterFile>
+            <ScatterFile>..\Output\STM32F10X_HD\STM32F10X_HD.sct</ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
             <Misc></Misc>
@@ -584,7 +584,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>New Group</GroupName>
+          <GroupName>bsp</GroupName>
           <Files>
             <File>
               <FileName>SysTick.c</FileName>
@@ -602,34 +602,99 @@
               <FilePath>..\Src\BSP\USART\usart.c</FilePath>
             </File>
             <File>
+              <FileName>gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\BSP\gpio\gpio.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\BSP\motor\motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>RTC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\BSP\RTC\RTC.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>network</GroupName>
+          <Files>
+            <File>
+              <FileName>esp8266.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\network\esp8266.c</FilePath>
+            </File>
+            <File>
               <FileName>gsm_base.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\gsm\gsm_base.c</FilePath>
+              <FilePath>..\Src\network\gsm_base.c</FilePath>
             </File>
             <File>
               <FileName>gsm_code.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\gsm\gsm_code.c</FilePath>
+              <FilePath>..\Src\network\gsm_code.c</FilePath>
             </File>
             <File>
-              <FileName>tcp_base.c</FileName>
+              <FileName>network_api.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\gsm\tcp_base.c</FilePath>
+              <FilePath>..\Src\network\network_api.c</FilePath>
             </File>
             <File>
-              <FileName>client_demo.c</FileName>
+              <FileName>nbiot_bc26.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\QIDI\client_demo.c</FilePath>
+              <FilePath>..\Src\network\nbiot_bc26.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>sys</GroupName>
+          <Files>
+            <File>
+              <FileName>sysconfig.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\sys\sysconfig.c</FilePath>
             </File>
             <File>
-              <FileName>qdy_aff.c</FileName>
+              <FileName>qdy_system.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\QIDI\qdy_aff.c</FilePath>
+              <FilePath>..\Src\sys\qdy_system.c</FilePath>
             </File>
             <File>
-              <FileName>qdy_interface.c</FileName>
+              <FileName>command.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Src\QIDI\qdy_interface.c</FilePath>
+              <FilePath>..\Src\sys\command\command.c</FilePath>
+            </File>
+            <File>
+              <FileName>command_server.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\sys\command\command_server.c</FilePath>
+            </File>
+            <File>
+              <FileName>my_list.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\sys\my_list.c</FilePath>
+            </File>
+            <File>
+              <FileName>timer_list.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\sys\timer_list.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>exsaple_RS485</GroupName>
+          <Files>
+            <File>
+              <FileName>uart_lcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\example\RS485_LCD\uart_lcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>rs485_sensor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\example\RS485_LCD\rs485_sensor.c</FilePath>
             </File>
           </Files>
         </Group>

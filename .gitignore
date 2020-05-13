@@ -1,5 +1,6 @@
 
 STM32F10X_HD/Output
+si
 
 *.hex
 *.axf

@@ -4,6 +4,9 @@
 #include "stm32f10x.h"
 
 #define USART1_REC_MAXLEN 200	//最大接收数据长度
+#define USART3_REC_MAXLEN 200	//最大接收数据长度
+
+#define USART5_REC_MAXLEN 200	//最大接收数据长度
 
 void USART1_Init_Config(u32 bound);
 void UART1_SendString(char* s);
@@ -13,6 +16,7 @@ void UART1_SendLR(void);
 void UART2_SendLR(void);
 void UART1_SendByte(char s);
 void UART1_SendData(u8* s, u32 len);
+u16 process_uart_1_data(void);
 
 
 #define printf_s(s)		UART1_SendString(s)

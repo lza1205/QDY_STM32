@@ -4,5 +4,7 @@
 #include "stm32f10x.h"
 
 void Timer2_Init_Config(void);
+void Timer3_Init_Config(void);
+
 
 #endif

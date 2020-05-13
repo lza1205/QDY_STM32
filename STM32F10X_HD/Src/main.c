@@ -11,9 +11,6 @@
 #include "string.h"
 
 
-#include "gsm_code.h"
-#include "gsm_base.h"
-#include "tcp_base.h"
 
 #include "all.h"
 
@@ -24,43 +21,36 @@
 * 输入   : 
 * 输出   : 
 * 返回   : 
-* 注意   : 串口2负责与MG323模块通信，串口1用于串口调试，可以避免在下载程序时数据
-					 还发送到模块
 *******************************************************************************/
 int main(void)
 {
 	SysTick_Init_Config();
-
+	gpio_bsp_init();
 	USART1_Init_Config(115200);
 	USART2_Init_Config(115200);
+	USART3_Init_Config(9600);
+	USART5_Init_Config(9600);
 	Timer2_Init_Config();
-	
-	UART1_SendString("GPRS模块GPRS测试程序\r\n");
-	UART1_SendString("GPRS模块在注册网络\r\n");
-	Wait_CREG();
-	UART1_SendString("GPRS模块注册成功\r\n");
-	UART1_SendString("GPRS模块开始连接服务器\r\n");
-	Set_ATE0();
+	Timer3_Init_Config();
+	RTC_Init();
 
-	Connect_Server(NULL);
-	UART1_SendString("GPRS模块连接服务器 成功\r\n");
+	qdy_system_init();
+
+
+	//这里不看
+	#if  EXAMPLE_DEMO == EXAMPLE_QDY
+		qd_cloud_main();
+	#endif
+
+	//我们最重要的入口函数
+	#if  EXAMPLE_DEMO == EXAMPLE_RS485_LCD
+		rs485_lcd_main();
+	#endif
+
 	while(1)
 	{
-		#if 0
-		LED1_ON();
-		Delay_nMs(2000);
-		LED1_OFF();
-		Delay_nMs(2000);
-		#else
-		//loop_3a_machine();
-		client_main();
-		#endif
-
-		/*
-		Rec_Server_Data();
 		
-		tcp_heart_beat();
-		*/
+		
 	}
 }
 
